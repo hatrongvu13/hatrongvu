@@ -74,7 +74,3 @@ jobs:
           # Cache Docker layers to speed up builds
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      # Step 9: Output image digest (optional)
-      - name: Output image digest
-        run: echo "Digest: ${{ steps.docker_build.outputs.digest }}"
