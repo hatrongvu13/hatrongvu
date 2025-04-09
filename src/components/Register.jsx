@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import { registerUser } from '../services/authService';
+import {authService} from '../services/authService';
 import "./Register.css";
 
 const Register = () => {
@@ -22,7 +22,7 @@ const Register = () => {
             return;
         }
         try {
-            await registerUser(userData);
+            await authService.registerUser(userData);
             navigate('/login');
         } catch (err) {
             console.log(err)

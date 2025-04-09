@@ -1,6 +1,6 @@
 import {useAuth} from "../context/AuthContext.jsx";
 import {useState} from "react";
-import {loginUser} from "../services/authService.js";
+import {authService} from "../services/authService.js";
 import {Link, useNavigate} from "react-router-dom";
 import "./Login.css";
 
@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userData = await loginUser(credentials);
+            const userData = await authService.loginUser(credentials);
             login(userData);
             navigate('/dashboard');
         } catch (err) {

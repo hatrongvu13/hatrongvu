@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useAuth} from '../context/AuthContext';
 import "./Dashboard.css";
-import {getUserProfile} from "../services/authService.js";
+import {authService} from "../services/authService.js";
 
 const Dashboard = () => {
     const { logout} = useAuth();
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [logoutLoading, setLogoutLoading] = useState(false);
+    const [, setLogoutLoading] = useState(false);
 
     useEffect(() => {
         fetchProfile();
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const fetchProfile = async () => {
         setLoading(true);
         try {
-            const userProfile = await getUserProfile();
+            const userProfile = await authService.getUserProfile();
             setProfile(userProfile.data);
         } catch (err) {
             console.log(err)
