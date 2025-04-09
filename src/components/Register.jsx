@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { registerUser } from '../services/authService';
+import "./Register.css";
 
 const Register = () => {
     const [userData, setUserData] = useState({
@@ -25,42 +26,65 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={userData.username}
-                    onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={userData.email}
-                    onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Phone"
-                    value={userData.phone}
-                    onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={userData.password}
-                    onChange={(e) => setUserData({ ...userData, password: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Fullname"
-                    value={userData.fullName}
-                    onChange={(e) => setUserData({ ...userData, fullName: e.target.value })}
-                />
-                <button type="submit">Register</button>
-            </form>
+        <div className="register-container">
+            <div className="register-card">
+                <div>
+                    <h2 className="register-title">Create your account</h2>
+                    <p className="register-subtitle">Sign up to get started</p>
+                </div>
+
+                {error && (
+                    <div className="error-message">
+                        <span>{error}</span>
+                    </div>
+                )}
+
+                <form className="register-form" onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            required
+                            className="input-field"
+                            placeholder="Username"
+                            value={userData.username}
+                            onChange={(e) => setUserData({ ...userData, username: e.target.value })}
+                        />
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            className="input-field"
+                            placeholder="Email address"
+                            value={userData.email}
+                            onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                        />
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            required
+                            className="input-field"
+                            placeholder="Password"
+                            value={userData.password}
+                            onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                        />
+                    </div>
+
+                    <div>
+                        <button type="submit" className="submit-button">
+                            Register
+                        </button>
+                    </div>
+                </form>
+
+                <p className="login-link">
+                    Already have an account?{' '}
+                    <Link to="/login">Sign in here</Link>
+                </p>
+            </div>
         </div>
     );
 };
