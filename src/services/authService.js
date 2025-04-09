@@ -1,7 +1,7 @@
 import axios from "axios";
-import {AUTH_TOKEN, REFRESH_TOKEN} from "../constant/Constant.js";
+import {AUTH_TOKEN} from "../constant/Constant.js";
 
-const API_URL = 'http://localhost:8080/user-manager/api/v1/user';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
     baseURL: API_URL,
