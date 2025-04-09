@@ -43,8 +43,8 @@ jobs:
           file: ./Dockerfile
           push: true # Set to false if you only want to build without pushing
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
           # Optionally cache to speed up builds
           cache-from: type=gha
           cache-to: type=gha,mode=max
