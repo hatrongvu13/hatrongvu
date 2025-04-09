@@ -17,7 +17,6 @@ const Login = () => {
             login(userData);
             navigate('/dashboard');
         } catch (err) {
-            console.log(err);
             setError('Invalid credentials');
         }
     };

@@ -9,13 +9,18 @@ const Register = () => {
         email: '',
         password: '',
         phone: '',
-        fullName: ''
+        fullName: '',
+        confirmPassword: ''
     });
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (userData.password !== userData.confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
         try {
             await registerUser(userData);
             navigate('/login');
@@ -62,6 +67,26 @@ const Register = () => {
                             onChange={(e) => setUserData({ ...userData, email: e.target.value })}
                         />
                         <input
+                            id="phone"
+                            name="phone"
+                            type="text"
+                            required
+                            className="input-field"
+                            placeholder="Phone"
+                            value={userData.phone}
+                            onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+                        />
+                        <input
+                            id="fullName"
+                            name="fullName"
+                            type="text"
+                            required
+                            className="input-field"
+                            placeholder="Full name"
+                            value={userData.fullName}
+                            onChange={(e) => setUserData({ ...userData, fullName: e.target.value })}
+                        />
+                        <input
                             id="password"
                             name="password"
                             type="password"
@@ -70,6 +95,16 @@ const Register = () => {
                             placeholder="Password"
                             value={userData.password}
                             onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                        />
+                        <input
+                            id="confirm-password"
+                            name="confirm-password"
+                            type="password"
+                            required
+                            className="input-field"
+                            placeholder="Confirm Password"
+                            value={userData.confirmPassword}
+                            onChange={(e) => setUserData({ ...userData, confirmPassword: e.target.value })}
                         />
                     </div>
 

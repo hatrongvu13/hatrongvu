@@ -2,11 +2,11 @@ import {createContext, useContext, useState} from "react";
 
 const AuthContext = createContext();
 export const AuthProvider = ( {children}) => {
-    const [user, setUser] = useState(null);
+    const[user, setUser] = useState(false);
 
     const login = (userData) => {
-        setUser(userData);
-        localStorage.setItem("token", userData.token)
+        setUser(true);
+        localStorage.setItem("token", userData.data.data.token)
     };
 
     const logout = () => {
@@ -15,7 +15,7 @@ export const AuthProvider = ( {children}) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{user, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

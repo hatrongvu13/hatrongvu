@@ -103,6 +103,11 @@
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
 }
 
+.submit-button:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
 .login-link {
     margin-top: 0.5rem;
     text-align: center;
