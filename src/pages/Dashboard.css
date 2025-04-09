@@ -59,6 +59,11 @@
     cursor: pointer;
 }
 
+.logout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Main Content */
 .main-content {
     flex-grow: 1;

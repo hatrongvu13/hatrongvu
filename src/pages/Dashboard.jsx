@@ -8,6 +8,7 @@ const Dashboard = () => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [logoutLoading, setLogoutLoading] = useState(false);
 
     useEffect(() => {
         fetchProfile();
@@ -26,6 +27,12 @@ const Dashboard = () => {
         }
     };
 
+    const handleLogout = async () => {
+        setLogoutLoading(true);
+        logout();
+        setLogoutLoading(false);
+    };
+
     return (
         <div className="dashboard-container">
             {/* Sidebar */}
@@ -39,7 +46,7 @@ const Dashboard = () => {
                         <li><a href="#" className="sidebar-link">Profile</a></li>
                         <li><a href="#" className="sidebar-link">Settings</a></li>
                         <li>
-                            <button onClick={logout} className="sidebar-link logout-btn">Logout</button>
+                            <button onClick={handleLogout} className="sidebar-link logout-btn">Logout</button>
                         </li>
                     </ul>
                 </nav>
